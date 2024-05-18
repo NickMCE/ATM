@@ -15,3 +15,17 @@ opentelemetry-sdk
 pydantic
 python-dotenv
 regex
+ alembic
+beautifulsoup4
+chromadb
+google-cloud-aiplatform
+gptcache
+langchain
+langchain-openai
+posthog
+pypdf
+pysbd
+rich
+schema
+sqlalchemy
+tiktoken
