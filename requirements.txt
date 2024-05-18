@@ -3,3 +3,15 @@ crewai
 langchain_google_genai
 embedchain
 chromadb
+appdirs
+click
+embedchain
+instructor
+langchain
+openai
+opentelemetry-api
+opentelemetry-exporter-otlp-proto-http
+opentelemetry-sdk
+pydantic
+python-dotenv
+regex
