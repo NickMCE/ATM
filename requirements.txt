@@ -1,3 +1,5 @@
 streamlit
 crewai
 langchain_google_genai
+embedchain
+chromadb
