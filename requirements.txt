@@ -1,4 +1,3 @@
 streamlit
 crewai
 langchain_google_genai
-sqlite3 >= 3.35.0
