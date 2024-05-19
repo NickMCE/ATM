@@ -68,11 +68,9 @@ def main():
             st.error(f"Selected agent '{selected_agent_name}' is not available.")
             return
 
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        
+        # Run async task using asyncio.run()
         try:
-            result = loop.run_until_complete(run_task(description, expected_output, selected_agent))
+            result = asyncio.run(run_task(description, expected_output, selected_agent))
             if result:
                 st.success("Task completed!")
                 
@@ -83,8 +81,6 @@ def main():
                 st.warning("No execution flow captured. Check the task and LLM output.")
         except Exception as e:
             st.error(f"Error running task: {e}")
-        finally:
-            loop.close()
 
 if __name__ == "__main__":
     main()
