@@ -2,7 +2,7 @@ streamlit
 crewai
 langchain_google_genai
 embedchain
-chromadb
+chromadb="0.4.22"
 appdirs
 click
 embedchain
@@ -29,3 +29,4 @@ rich
 schema
 sqlalchemy
 tiktoken
+crewai[tools]
