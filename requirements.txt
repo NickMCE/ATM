@@ -30,3 +30,4 @@ schema
 sqlalchemy
 tiktoken
 crewai[tools]
+sqlite3=="3.35.0"
