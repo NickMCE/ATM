@@ -2,7 +2,7 @@ streamlit
 crewai
 langchain_google_genai
 embedchain
-chromadb="0.4.22"
+chromadb=="0.4.22"
 appdirs
 click
 embedchain
