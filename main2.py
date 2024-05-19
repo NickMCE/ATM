@@ -1,5 +1,5 @@
-import asyncio
 import streamlit as st
+import asyncio
 from crewai import Agent, Task, Crew, Process
 from langchain_google_genai import ChatGoogleGenerativeAI
 
@@ -39,6 +39,20 @@ business_consultant = Agent(
 
 agents = {'Marketer': marketer, 'Techie': technologist, 'Business': business_consultant}
 
+async def run_task(description, expected_output, selected_agent):
+    task = Task(
+        description=description,
+        expected_output=expected_output,
+        agent=selected_agent  # Ensure the agent is assigned here
+    )
+    
+    try:
+        crew = Crew(tasks=[task], agents=[selected_agent], process=Process.sequential, verbose=True)
+        result = await crew.kickoff_async()
+        return result
+    except Exception as e:
+        raise e
+
 def main():
     st.title("Agent Task Manager")
 
@@ -54,15 +68,11 @@ def main():
             st.error(f"Selected agent '{selected_agent_name}' is not available.")
             return
 
-        task = Task(
-            description=description,
-            expected_output=expected_output,
-            agent=selected_agent  # Ensure the agent is assigned here
-        )
-
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        
         try:
-            crew = Crew(tasks=[task], agents=[selected_agent], process=Process.sequential, verbose=True)
-            result = crew.kickoff()
+            result = loop.run_until_complete(run_task(description, expected_output, selected_agent))
             if result:
                 st.success("Task completed!")
                 
@@ -73,6 +83,8 @@ def main():
                 st.warning("No execution flow captured. Check the task and LLM output.")
         except Exception as e:
             st.error(f"Error running task: {e}")
+        finally:
+            loop.close()
 
 if __name__ == "__main__":
     main()
