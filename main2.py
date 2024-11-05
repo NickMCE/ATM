@@ -3,7 +3,7 @@ from crewai import Agent, Task, Crew, Process
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 # Load LLM models (replace with your preferred methods)
-api_gemini = "AIzaSyAYXlh8OBQyWtvXcQsvVQzUYLOgI80NbDM"
+api_gemini = "api_key"
 llm = ChatGoogleGenerativeAI(
     model="gemini-pro", verbose=True, temperature=0.1, google_api_key=api_gemini
 )
